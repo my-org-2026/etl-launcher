@@ -1,0 +1,17 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gcloud'
+      - 'functions'
+      - 'deploy'
+      - 'launcher'
+      - '--gen2'
+      - '--region=europe-west1'
+      - '--source=.'
+      - '--runtime=python312'
+      - '--entry-point=main'
+      - '--trigger-http'
+      - '--allow-unauthenticated'
+      - '--set-env-vars=PROJECT_ID=asteroids-487111,TOPIC_ID=missing-dates-topic'
