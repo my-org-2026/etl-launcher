@@ -2,6 +2,7 @@
 from google.cloud import bigquery
 from utils.settings import settings
 from utils.helper import get_current_week_dates
+from utils.logger import logger
 
 class BigQueryClient:
     def __init__(self):
@@ -15,7 +16,7 @@ class BigQueryClient:
             self.client.get_table(self.table_id)
             print(f"Table {self.table_id} already exists.")
         except Exception:
-            print(f"Table {self.table_id} does not exist. Creating table...")
+            logger.info(f"Table {self.table_id} does not exist. Creating table...")
             schema = [
                 bigquery.SchemaField("id", "INTEGER", mode="REQUIRED"),
                 bigquery.SchemaField("name", "STRING", mode="REQUIRED"),
