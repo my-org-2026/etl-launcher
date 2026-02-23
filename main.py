@@ -16,9 +16,6 @@ def main(request):
     publisher = pubsub_v1.PublisherClient()
     topic_path = publisher.topic_path(settings.PROJECT_ID, topic_id)
 
-
-    logger.info("Missing dates", missing_dates)
-
     futures = []
 
     for date in missing_dates:
